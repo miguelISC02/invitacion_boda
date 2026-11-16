@@ -3,11 +3,11 @@
    ========================================================= */
 :root{
   --olive-900:#3f4a27;
-  --olive-700:#55613a;
+  --olive-700:#424a26;
   --olive-600:#647046;
   --olive-500:#717d52;
-  --olive-lining:#9aa25a;
-  --olive-lining-2:#b8b96e;
+  --olive-lining:#8e9752;
+  --olive-lining-2:#aab06a;
   --paper:#fbfbf8;
   --ink:#2b2b28;
   --ink-soft:#5a5a54;
@@ -15,8 +15,11 @@
   --font-serif:'Cormorant Garamond', 'Times New Roman', Georgia, serif;
   --ease-out:cubic-bezier(.22,.8,.26,1);
 
-  /* Ancho del sobre: en móvil, todo el ancho disponible */
-  --env-w:min(100vw - 2.5rem, 440px);
+  /* Sobre (foto 1412×870): alto = ancho × --env-ratio */
+  --env-ratio:.616;
+  --flap-ratio:.739;              /* alto de la solapa respecto al sobre */
+  /* Ancho del sobre en móvil (deja margen para el ramo) */
+  --env-w:min(100vw - 4.5rem, 440px);
 }
 
 *{ -webkit-tap-highlight-color:transparent; }
@@ -67,6 +70,7 @@ body.is-locked{ overflow:hidden; }
 .names .rest{
   font-family:var(--font-serif);
   font-size:clamp(1.3rem,6.2vw,1.9rem);
+  letter-spacing:.04em;
   font-weight:500;
 }
 .names .amp{
@@ -90,30 +94,31 @@ body.is-locked{ overflow:hidden; }
   width:var(--env-w);
   display:flex;
   flex-direction:column;
-  padding-bottom:calc(var(--env-w) * .2);   /* espacio para el ramo colgante */
+  padding-bottom:calc(var(--env-w) * .3);   /* espacio para el ramo colgante */
 }
 .stage{
   position:relative;
   width:100%;
-  margin-top:calc(var(--env-w) * .17);      /* espacio para los alcatraces */
+  margin-top:calc(var(--env-w) * .2);       /* espacio para los alcatraces */
   perspective:1400px;
   transition:margin-top .8s var(--ease-out);
 }
 /* Al abrir, el sobre baja para que la solapa no tape a los novios */
 .is-opened .stage{
-  margin-top:calc(var(--env-w) * .7 * .62 + 1.5rem);
+  margin-top:calc(var(--env-w) * var(--env-ratio) * var(--flap-ratio) + 1.5rem);
 }
 
 .envelope{
   position:relative;
   width:100%;
-  aspect-ratio:10 / 7;
+  aspect-ratio:1412 / 870;
+  z-index:1;                                  /* por encima de los alcatraces */
   cursor:pointer;
   border:0;
   padding:0;
   background:transparent;
   display:block;
-  filter:drop-shadow(0 18px 22px rgba(40,46,20,.28));
+  filter:drop-shadow(0 16px 20px rgba(40,46,20,.26));
   transition:transform .5s var(--ease-out);
 }
 .envelope:hover{ transform:translateY(-3px); }
@@ -121,6 +126,7 @@ body.is-locked{ overflow:hidden; }
 .envelope.is-open{ cursor:default; transform:none; }
 
 .env-layer{ position:absolute; inset:0; width:100%; height:100%; }
+img.env-layer{ object-fit:fill; display:block; }
 .env-back{ z-index:1; }
 .env-front{ z-index:3; pointer-events:none; }
 
@@ -128,7 +134,7 @@ body.is-locked{ overflow:hidden; }
   position:absolute;
   z-index:2;
   left:13%; right:13%;
-  top:12%; bottom:2%;
+  top:8%; bottom:6%;
   background:#fff;
   padding:1.5%;
   box-shadow:0 6px 18px rgba(0,0,0,.18);
@@ -148,19 +154,27 @@ body.is-locked{ overflow:hidden; }
   position:absolute;
   z-index:4;
   left:0; top:0;
-  width:100%; height:62%;
+  width:100%; height:calc(var(--flap-ratio) * 100%);
   transform-origin:50% 0;
   transform-style:preserve-3d;
   transform:rotateX(0deg);
   transition:transform .8s var(--ease-out), z-index 0s linear .4s;
 }
-.flap svg{
+.flap > *{
   position:absolute; inset:0;
   width:100%; height:100%;
+  display:block;
   backface-visibility:hidden;
   -webkit-backface-visibility:hidden;
 }
-.flap .flap-inner{ transform:rotateX(180deg); }
+.flap-outer{ filter:drop-shadow(0 4px 4px rgba(25,30,10,.32)); }
+/* Cara interior: forro con la misma silueta de la solapa */
+.flap-inner{ transform:rotateX(180deg); }
+.envelope.is-open .flap{
+  transform:rotateX(180deg);
+  z-index:0;
+}
+
 .envelope.is-open .flap{
   transform:rotateX(180deg);
   z-index:0;
@@ -168,10 +182,35 @@ body.is-locked{ overflow:hidden; }
 
 /* ---------- Alcatraces ---------- */
 .flowers{ position:absolute; pointer-events:none; z-index:5; }
-.flowers--top{ right:-4%; top:-24%; width:34%; }
-.flowers--bottom{ left:-9%; bottom:-38%; width:34%; }
+/* Alcatraces: detrás del sobre, solo asoman las flores */
+.flowers--top{
+  z-index:0;
+  right:-15%;
+  top:-35%;
+  width:40%;
+  transform:scaleX(-1) rotate(-7deg);
+  transform-origin:50% 100%;
+}
+.flowers--top img{
+  width:100%;
+  height:auto;
+  display:block;
+  filter:drop-shadow(0 3px 3px rgba(40,46,20,.18));
+}
+.flowers--bottom{
+  left:-12%;
+  top:48%;
+  width:27%;
+}
+.flowers--bottom img{
+  width:100%;
+  height:auto;
+  display:block;
+  filter:drop-shadow(0 6px 8px rgba(40,46,20,.22));
+}
 .flowers svg{ width:100%; height:auto; display:block; overflow:visible; }
 .sway{ transform-origin:50% 100%; animation:sway 6s ease-in-out infinite alternate; }
+.sway--hang{ transform-origin:50% 0; animation-duration:7s; }
 @keyframes sway{ from{ transform:rotate(-1.2deg);} to{ transform:rotate(1.2deg);} }
 
 /* ---------- Indicación ---------- */
@@ -277,8 +316,8 @@ body.is-locked{ overflow:hidden; }
    TABLET (≥ 768px)
    ========================================================= */
 @media (min-width: 768px){
-  :root{ --env-w:min(520px, calc((100svh - 24rem) * .93)); }
-  .meta{ margin-left:22%; }
+  :root{ --env-w:min(520px, calc((100svh - 24rem) * .9)); }
+  .meta{ margin-left:75%; }
 }
 
 /* =========================================================
@@ -287,7 +326,7 @@ body.is-locked{ overflow:hidden; }
    que novios + sobre + invitado quepan en una sola pantalla
    ========================================================= */
 @media (min-width: 992px){
-  :root{ --env-w:clamp(340px, calc((100svh - 24rem) * .93), 600px); }
+  :root{ --env-w:clamp(340px, calc((100svh - 24rem) * .9), 620px); }
   .cover{ gap:clamp(1.25rem,3vh,2.25rem); padding-block:clamp(1.5rem,4vh,3rem); }
 
   .names .cap{ font-size:clamp(4.6rem,5.2vw,6.4rem); }

@@ -18,71 +18,6 @@
 </head>
 <body class="is-locked">
 
-  <!-- =========================================================
-       DEFINICIONES SVG REUTILIZABLES (alcatraz, flor pequeña, hoja)
-       ========================================================= -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <defs>
-      <linearGradient id="spathe" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#ffffff"/>
-        <stop offset=".65" stop-color="#f4f4ee"/>
-        <stop offset="1" stop-color="#d9dccb"/>
-      </linearGradient>
-      <linearGradient id="spatheInner" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#eef0e4"/>
-        <stop offset="1" stop-color="#c9cfae"/>
-      </linearGradient>
-      <linearGradient id="stem" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stop-color="#7f9150"/>
-        <stop offset="1" stop-color="#4f6230"/>
-      </linearGradient>
-      <linearGradient id="spadix" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stop-color="#f6d867"/>
-        <stop offset="1" stop-color="#d9a93a"/>
-      </linearGradient>
-      <radialGradient id="petal" cx=".4" cy=".35" r=".8">
-        <stop offset="0" stop-color="#ffffff"/>
-        <stop offset="1" stop-color="#e3e6d6"/>
-      </radialGradient>
-
-      <!-- Alcatraz: tallo hacia abajo, espata abierta arriba -->
-      <symbol id="calla" viewBox="0 0 60 120">
-        <path d="M31 120 C30 95 30 75 31 56" stroke="url(#stem)" stroke-width="3.2" fill="none" stroke-linecap="round"/>
-        <path d="M31 60 C20 56 11 44 11 30 C11 16 24 6 44 3 C52 2 56 4 54 8
-                 C49 14 49 22 47 32 C45 45 40 55 31 60 Z"
-              fill="url(#spathe)" stroke="#c9ceb6" stroke-width=".6"/>
-        <path d="M30 52 C22 46 19 36 22 26 C25 18 34 12 44 10 C40 18 39 26 37 34 C35 42 33 48 30 52 Z"
-              fill="url(#spatheInner)" opacity=".75"/>
-        <path d="M30 50 C28 42 29 32 33 24" stroke="url(#spadix)" stroke-width="4.2" fill="none" stroke-linecap="round"/>
-      </symbol>
-
-      <!-- Flor pequeña redonda -->
-      <symbol id="blossom" viewBox="0 0 40 40">
-        <g fill="url(#petal)" stroke="#d3d7c3" stroke-width=".5">
-          <ellipse cx="20" cy="10" rx="7" ry="9"/>
-          <ellipse cx="30" cy="17" rx="7" ry="9" transform="rotate(72 30 17)"/>
-          <ellipse cx="26" cy="29" rx="7" ry="9" transform="rotate(144 26 29)"/>
-          <ellipse cx="14" cy="29" rx="7" ry="9" transform="rotate(216 14 29)"/>
-          <ellipse cx="10" cy="17" rx="7" ry="9" transform="rotate(288 10 17)"/>
-        </g>
-        <circle cx="20" cy="20" r="4" fill="#cfd8a8"/>
-      </symbol>
-
-      <!-- Botón/bola verde-blanca -->
-      <symbol id="bud" viewBox="0 0 30 30">
-        <circle cx="15" cy="15" r="13" fill="#eef1df" stroke="#c7cfa6" stroke-width=".8"/>
-        <circle cx="11" cy="11" r="4" fill="#ffffff" opacity=".8"/>
-        <path d="M6 18 Q15 26 24 18" stroke="#b9c48a" stroke-width="1" fill="none"/>
-      </symbol>
-
-      <!-- Hoja -->
-      <symbol id="leaf" viewBox="0 0 30 60">
-        <path d="M15 58 C2 40 2 18 15 2 C28 18 28 40 15 58 Z" fill="#7b8b4c"/>
-        <path d="M15 56 L15 6" stroke="#5c6c35" stroke-width="1"/>
-      </symbol>
-    </defs>
-  </svg>
-
   <main class="invite container-fluid" id="portada">
     <div class="row g-0 justify-content-center">
       <div class="col-12 col-md-10 col-lg-8 col-xl-7 cover">
@@ -93,7 +28,7 @@
             <h1 class="names" aria-label="Miguel y Alison">
               <span class="cap">M</span><span class="rest">IGUEL</span><span class="amp">&amp;</span><span class="cap">A</span><span class="rest">LISON</span>
             </h1>
-            <p class="meta">CIUDAD DE MEXICO | 22.06.2026</p>
+            <p class="meta">13.03.2027</p>
           </div>
         </header>
 
@@ -103,98 +38,34 @@
 
             <!-- Alcatraces esquina superior derecha -->
             <div class="flowers flowers--top" aria-hidden="true">
-              <svg viewBox="0 0 120 150">
-                <g class="sway">
-                  <use href="#leaf" x="62" y="70" width="18" height="40" transform="rotate(25 70 100)"/>
-                  <use href="#calla" x="30" y="18" width="52" height="110" transform="rotate(-14 56 120)"/>
-                  <use href="#calla" x="52" y="0"  width="58" height="124" transform="rotate(8 80 124)"/>
-                  <use href="#calla" x="10" y="36" width="44" height="96" transform="rotate(-32 32 132)"/>
-                </g>
-              </svg>
+              <img src="assets/img/Alcatraces.png" alt="" class="sway" width="487" height="500" decoding="async">
             </div>
 
             <button class="envelope" id="envelope" type="button" aria-label="Abrir la invitación" aria-expanded="false" aria-controls="contenido">
 
-              <!-- Forro interior -->
-              <svg class="env-layer env-back" viewBox="0 0 100 70" preserveAspectRatio="none" aria-hidden="true">
-                <defs>
-                  <pattern id="lining" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-                    <rect width="6" height="6" fill="var(--olive-lining)"/>
-                    <path d="M0 3 H6" stroke="var(--olive-lining-2)" stroke-width="1.2" opacity=".55"/>
-                  </pattern>
-                </defs>
-                <rect width="100" height="70" fill="var(--olive-700)"/>
-                <rect x="2" y="2" width="96" height="66" fill="url(#lining)"/>
-              </svg>
+               <!-- Interior del sobre (forro de hojas) -->
+              <img class="env-layer env-back" src="assets/img/sobre-interior.webp" alt="" width="1412" height="870">
 
               <!-- Tarjeta / foto (reemplaza assets/img/pareja.jpg) -->
               <div class="letter">
                 <img src="assets/img/boda_sobre.jpeg" alt="Miguel y Alison" loading="eager"
                      onerror="this.onerror=null;this.src=this.dataset.fallback"
-               data-fallback="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 220'%3E%3Cdefs%3E%3ClinearGradient id='g' x2='1' y2='1'%3E%3Cstop stop-color='%23d6d1c2'/%3E%3Cstop offset='1' stop-color='%239a9880'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='220' fill='url(%23g)'/%3E%3Ctext x='150' y='115' font-family='Georgia,serif' font-size='14' fill='%23fff' text-anchor='middle'%3EAgrega assets/img/pareja.jpg%3C/text%3E%3C/svg%3E">
+               data-fallback="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 220'%3E%3Cdefs%3E%3ClinearGradient id='g' x2='1' y2='1'%3E%3Cstop stop-color='%23d6d1c2'/%3E%3Cstop offset='1' stop-color='%239a9880'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='220' fill='url(%23g)'/%3E%3Ctext x='150' y='115' font-family='Georgia,serif' font-size='14' fill='%23fff' text-anchor='middle'%3EAgrega assets/img/boda_sobre.jpeg%3C/text%3E%3C/svg%3E">
               </div>
 
-              <!-- Bolsillos frontales -->
-              <svg class="env-layer env-front" viewBox="0 0 100 70" preserveAspectRatio="none" aria-hidden="true">
-                <defs>
-                  <linearGradient id="sideL" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0" stop-color="#5d693f"/><stop offset="1" stop-color="#6a7649"/>
-                  </linearGradient>
-                  <linearGradient id="sideR" x1="1" y1="0" x2="0" y2="0">
-                    <stop offset="0" stop-color="#5a663c"/><stop offset="1" stop-color="#687447"/>
-                  </linearGradient>
-                  <linearGradient id="bottomG" x1="0" y1="1" x2="0" y2="0">
-                    <stop offset="0" stop-color="#5e6a40"/><stop offset="1" stop-color="#717d50"/>
-                  </linearGradient>
-                </defs>
-                <path d="M0 0 L52 39 L0 70 Z" fill="url(#sideL)"/>
-                <path d="M100 0 L48 39 L100 70 Z" fill="url(#sideR)"/>
-                <path d="M0 70 L46 36 Q50 33.5 54 36 L100 70 Z" fill="url(#bottomG)"/>
-                <path d="M0 70 L46 36 Q50 33.5 54 36 L100 70" fill="none" stroke="rgba(255,255,255,.08)" stroke-width=".35"/>
-              </svg>
+              <!-- Frente del sobre (foto sin solapa) -->
+              <img class="env-layer env-front" src="assets/img/sobre-frente.webp" alt="" width="1412" height="870">
 
-              <!-- Solapa -->
+              <!-- Solapa: cara exterior (foto) y cara interior (forro) -->
               <div class="flap" aria-hidden="true">
-                <svg class="flap-outer" viewBox="0 0 100 62" preserveAspectRatio="none">
-                  <defs>
-                    <linearGradient id="flapG" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0" stop-color="#6b774a"/><stop offset="1" stop-color="#626e42"/>
-                    </linearGradient>
-                  </defs>
-                  <path d="M0 0 H100 L57 54 Q50 61 43 54 Z" fill="url(#flapG)"/>
-                  <path d="M0 0 L43 54 Q50 61 57 54 L100 0" fill="none" stroke="rgba(0,0,0,.12)" stroke-width=".4"/>
-                </svg>
-                <svg class="flap-inner" viewBox="0 0 100 62" preserveAspectRatio="none">
-                  <path d="M0 0 H100 L57 54 Q50 61 43 54 Z" fill="var(--olive-700)"/>
-                  <path d="M3 1.5 H97 L56 52 Q50 58 44 52 Z" fill="url(#lining)"/>
-                </svg>
+                <img class="flap-outer" src="assets/img/sobre-solapa.webp" alt="" width="1412" height="643">
+                <img class="flap-inner" src="assets/img/sobre-solapa-interior.webp" alt="" width="1412" height="642">
               </div>
             </button>
 
             <!-- Ramo esquina inferior izquierda -->
             <div class="flowers flowers--bottom" aria-hidden="true">
-              <svg viewBox="0 0 120 210">
-                <g class="sway">
-                  <!-- tallos colgantes -->
-                  <path d="M58 90 C56 130 62 160 58 205" stroke="#6f8045" stroke-width="1.6" fill="none"/>
-                  <path d="M64 92 C70 128 66 150 72 190" stroke="#7c8c50" stroke-width="1.3" fill="none"/>
-                  <path d="M52 94 C46 120 50 150 44 178" stroke="#7c8c50" stroke-width="1.2" fill="none"/>
-                  <g fill="#8a9a5a">
-                    <circle cx="58" cy="140" r="1.8"/><circle cx="59" cy="160" r="1.6"/><circle cx="58" cy="182" r="1.5"/>
-                    <circle cx="69" cy="140" r="1.6"/><circle cx="70" cy="168" r="1.4"/>
-                    <circle cx="48" cy="128" r="1.5"/><circle cx="46" cy="156" r="1.4"/>
-                  </g>
-                  <use href="#leaf" x="60" y="40" width="22" height="48" transform="rotate(40 70 70)"/>
-                  <use href="#leaf" x="20" y="58" width="20" height="42" transform="rotate(-50 30 80)"/>
-                  <use href="#calla" x="44" y="6" width="44" height="92" transform="rotate(18 66 98)"/>
-                  <use href="#bud" x="22" y="14" width="26" height="26"/>
-                  <use href="#bud" x="36" y="4" width="20" height="20"/>
-                  <use href="#blossom" x="30" y="40" width="34" height="34"/>
-                  <use href="#blossom" x="54" y="64" width="30" height="30"/>
-                  <use href="#blossom" x="16" y="70" width="26" height="26"/>
-                  <use href="#blossom" x="40" y="80" width="22" height="22"/>
-                </g>
-              </svg>
+              <img src="assets/img/ramo.webp" alt="" class="sway sway--hang" width="699" height="1508" decoding="async">
             </div>
           </div>
 
@@ -211,7 +82,6 @@
 
         <!-- Invitado + reproductor -->
         <div class="details">
-          <!-- Reproductor -->
           
           <!-- Invitado -->
           <div class="guest">
