@@ -147,7 +147,7 @@ img.env-layer{ object-fit:fill; display:block; }
   display:block;
 }
 .envelope.is-open .letter{
-  transform:translateY(-58%) rotate(-5deg) scale(1.04);
+  transform:translateY(-58%) scale(1.04);
 }
 
 .flap{
@@ -185,20 +185,35 @@ img.env-layer{ object-fit:fill; display:block; }
 /* Alcatraces: detrás del sobre, solo asoman las flores */
 .flowers--top{
   z-index:0;
-  right:-15%;
+  right:-4%;
   top:-35%;
   width:40%;
-  transform:scaleX(-1) rotate(-7deg);
+  transform:translateY(0) scaleX(-1) rotate(4deg);
   transform-origin:50% 100%;
+  /* Sube al mismo ritmo que la solapa (.8s, sin retraso) y pasa al
+     frente en el mismo instante en que la solapa pasa por la vertical */
+  transition:
+    transform .10s var(--ease-out),
+    z-index 0s linear .10s;
 }
 .flowers--top img{
+  z-index: 0;
   width:100%;
   height:auto;
   display:block;
   filter:drop-shadow(0 3px 3px rgba(40,46,20,.18));
+  /* los tallos se desvanecen: cerrados quedan ocultos tras el sobre
+     y al subir no terminan en seco sobre la solapa */
+  -webkit-mask-image:linear-gradient(to bottom, #000 62%, transparent 96%);
+          mask-image:linear-gradient(to bottom, #000 62%, transparent 96%);
+}
+/* Sobre abierto: los alcatraces suben y quedan al frente, sobre la esquina de la foto */
+.is-opened .flowers--top{
+  z-index:0;
+  transform:translateY(calc(var(--env-w) * -.3)) scaleX(-1) rotate(-3deg);
 }
 .flowers--bottom{
-  left:-12%;
+  left:-5%;
   top:48%;
   width:27%;
 }
@@ -317,7 +332,7 @@ img.env-layer{ object-fit:fill; display:block; }
    ========================================================= */
 @media (min-width: 768px){
   :root{ --env-w:min(520px, calc((100svh - 24rem) * .9)); }
-  .meta{ margin-left:75%; }
+  .meta{ margin-left:60%; }
 }
 
 /* =========================================================
