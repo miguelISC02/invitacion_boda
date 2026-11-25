@@ -383,7 +383,7 @@ img.env-layer{ object-fit:fill; display:block; }
   position:absolute;
   inset:10px;
   border:30px solid transparent;
-  border-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120' fill='none'%3E%3Cpath d='M22 4H98A18 18 0 0 0 116 22V98A18 18 0 0 0 98 116H22A18 18 0 0 0 4 98V22A18 18 0 0 0 22 4Z' stroke='%23a3a39b' stroke-width='2.2'/%3E%3Cpath d='M22 9.5H98A12.5 12.5 0 0 0 110.5 22V98A12.5 12.5 0 0 0 98 110.5H22A12.5 12.5 0 0 0 9.5 98V22A12.5 12.5 0 0 0 22 9.5Z' stroke='%23c4c4bc' stroke-width='1'/%3E%3C/svg%3E") 30 stretch;
+  border-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120' fill='none'%3E%3Cpath d='M22 4H98A18 18 0 0 0 116 22V98A18 18 0 0 0 98 116H22A18 18 0 0 0 4 98V22A18 18 0 0 0 22 4Z' stroke='%23647046' stroke-width='2.2'/%3E%3Cpath d='M28 11H92A25 25 0 0 0 109 28V92A25 25 0 0 0 92 109H28A25 25 0 0 0 11 92V28A25 25 0 0 0 28 11Z' stroke='%23a3ab7e' stroke-width='1'/%3E%3C/svg%3E") 30 stretch;
   pointer-events:none;
 }
 .sheet-body{ position:relative; }
@@ -482,8 +482,7 @@ img.env-layer{ object-fit:fill; display:block; }
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{ animation:none !important; transition-duration:.01ms !important; transition-delay:0s !important; }
   .hint .arrow-path{ stroke-dashoffset:0; }
-  .reveal{ opacity:1; transform:none; }
-}
+  .reveal, .venues > *, .polaroid, .polaroids-flower{ opacity:1 !important; }}
 
 .frase{
   font-family: var(--font-script);
@@ -538,3 +537,146 @@ img.env-layer{ object-fit:fill; display:block; }
   transition:opacity 1s ease .7s, transform 1.2s var(--ease-out) .7s;
 }
 .polaroids.is-in .polaroids-flower{ opacity:1; transform:translateX(-46%) scale(1); }
+
+/* =========================================================
+   SECCIÓN: CEREMONIA Y RECEPCIÓN
+   ========================================================= */
+.venues{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  margin:0 auto clamp(3rem,10vw,5rem);
+}
+
+/* Sobre cerrado (reutiliza las capas del sobre de la portada) */
+.venue-envelope{
+  position:relative;
+  width:80%;
+  aspect-ratio:1412 / 870;
+  transform:rotate(-3deg);
+  filter:drop-shadow(0 14px 18px rgba(40,46,20,.22));
+}
+.venue-envelope > img{ position:absolute; left:0; top:0; width:100%; height:100%; display:block; }
+.venue-envelope .venue-envelope-flap{
+  height:calc(var(--flap-ratio) * 100%);
+  filter:drop-shadow(0 4px 4px rgba(25,30,10,.3));
+}
+.venue-seal{
+  position:absolute;
+  z-index:4;
+  left:40%;                 /* centro del sobre (80% / 2) */
+  top:0;
+  width:14%;
+  height:auto;
+  /* punta de la solapa: ancho del sobre × proporción × solapa − medio sello */
+  margin-top:calc(80% * .616 * .739 - 9%);
+  translate:-50% 0;
+  filter:drop-shadow(0 3px 4px rgba(0,0,0,.3));
+}
+
+/* Tarjeta blanca */
+.venue-card{
+  position:relative;
+  z-index:2;
+  align-self:flex-end;
+  width:82%;
+  margin-top:-14%;          /* la punta de la solapa queda justo en el borde */
+  background:#fff;
+  padding:14% clamp(1.2rem,5vw,1.6rem) clamp(1.3rem,5vw,1.6rem);   /* deja libre el sello */
+  text-align:center;
+  color:#3d3d39;
+  transform:rotate(2deg);
+  box-shadow:0 1px 2px rgba(0,0,0,.06), 0 16px 32px rgba(40,46,20,.16);
+}
+
+/* Óvalo verde */
+.venue-oval{
+  position:relative;
+  z-index:3;
+  width:min(70%, 300px);
+  margin:-7% 0 0 4%;
+  aspect-ratio:5 / 7;
+  border-radius:50%;
+  background:radial-gradient(80% 70% at 40% 30%, #4d5a30 0%, #3f4a26 70%, #36401f 100%);
+  color:#f4f1e6;
+  padding:20% 15% 16%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  transform:rotate(-2deg);
+  box-shadow:0 18px 34px rgba(30,36,14,.3);
+}
+
+/* Contenido compartido */
+.venue-title{
+  font-family:var(--font-serif);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font-weight:600;
+  font-size:clamp(1rem,4.4vw,1.2rem);
+  margin:0 0 .6rem;
+  color:inherit;
+}
+.venue-line{ width:100%; margin-bottom:.6rem; }
+.venue-line p{ margin:0; line-height:1.2; }
+.venue-place{
+  font-family:var(--font-serif);
+  font-style:italic;
+  font-size:clamp(.95rem,4vw,1.08rem);
+  text-align:left;
+}
+.venue-time{
+  font-family:var(--font-serif);
+  font-weight:600;
+  font-size:clamp(.95rem,4vw,1.08rem);
+  white-space:nowrap;
+}
+.venue-art{
+  display:block;
+  width:58%;
+  max-width:170px;
+  height:auto;
+  margin:.4rem auto .9rem;
+  color:#6b6b63;
+}
+.venue-oval .venue-art{ width:70%; color:#e9e4d2; margin-bottom:.7rem; }
+.venue-oval .venue-place{ white-space:nowrap; }
+.venue-oval .venue-line{ gap:.75rem !important; justify-content:center !important; }
+
+/* Botón Ubicación */
+.btn-location{
+  display:inline-flex;
+  align-items:center;
+  gap:.35rem;
+  padding:.3rem 1.1rem;
+  border:1.5px solid var(--olive-600);
+  border-radius:999px;
+  font-family:var(--font-serif);
+  font-size:1rem;
+  font-weight:500;
+  letter-spacing:.03em;
+  color:var(--olive-900);
+  text-decoration:none;
+  transition:background .25s ease, color .25s ease;
+}
+.btn-location svg{ width:15px; height:15px; }
+.btn-location:hover,
+.btn-location:focus-visible{ background:var(--olive-600); color:#fff; }
+.btn-location--light{ border-color:#e9e4d2; color:#f4f1e6; }
+.btn-location--light:hover,
+.btn-location--light:focus-visible{ background:#f4f1e6; color:var(--olive-900); }
+
+/* Aparición escalonada */
+.venues > *{
+  opacity:0;
+  transition:opacity .8s ease, translate 1s var(--ease-out);
+}
+.venues .venue-envelope{ translate:-30px 0; }
+.venues .venue-card{ translate:30px 10px; transition-delay:.25s; }
+.venues .venue-oval{ translate:0 40px; transition-delay:.5s; }
+.venues.is-in > *{ opacity:1; translate:0 0; }
+.venues > .venue-seal{ translate:-50% 0; scale:1.4; transition:opacity .6s ease .75s, scale .6s var(--ease-out) .75s; }
+.venues.is-in > .venue-seal{ translate:-50% 0; scale:1; }
+
