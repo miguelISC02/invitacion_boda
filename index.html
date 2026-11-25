@@ -113,12 +113,12 @@
 
                 <div class="row g-2 sheet-parents">
                   <div class="col-6 text-start">
-                    <p>Norma Gonzalez Estevez</p>
-                    <p>Miguel Reyes Garcìa</p>
+                    <p>Norma Gonzalez</p>
+                    <p>Miguel Reyes</p>
                   </div>
                   <div class="col-6 text-end">
-                    <p>Janneth Salazar Solis</p>
-                    <p>Marco Martínez Perez</p>
+                    <p>Janneth Salazar</p>
+                    <p>Marco Martínez</p>
                   </div>
                 </div>
 
@@ -137,45 +137,7 @@
             <!-- Planta verde: añadir al calendario -->
             <div class="dropdown calendar-badge">
               <button class="calendar-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Añadir la boda a tu calendario">
-                <svg class="calendar-plant" viewBox="0 0 200 180" aria-hidden="true">
-                  <defs>
-                    <path id="leafPetal" d="M100 90 C58 72 54 14 100 8 C146 14 142 72 100 90 Z"/>
-                  </defs>
-                  <!-- hojas traseras (más oscuras) -->
-                  <g fill="#3f4a26">
-                    <use href="#leafPetal" transform="rotate(22 100 90) scale(1.02) translate(-2 -2)"/>
-                    <use href="#leafPetal" transform="rotate(67 100 90)"/>
-                    <use href="#leafPetal" transform="rotate(112 100 90)"/>
-                    <use href="#leafPetal" transform="rotate(157 100 90)"/>
-                    <use href="#leafPetal" transform="rotate(202 100 90)"/>
-                    <use href="#leafPetal" transform="rotate(247 100 90)"/>
-                    <use href="#leafPetal" transform="rotate(292 100 90)"/>
-                    <use href="#leafPetal" transform="rotate(337 100 90)"/>
-                  </g>
-                  <!-- hojas delanteras -->
-                  <g fill="#4d5a30" stroke="#3a4423" stroke-width="1.2">
-                    <use href="#leafPetal" transform="rotate(0 100 90)"/>
-                    <use href="#leafPetal" transform="rotate(45 100 90)"/>
-                    <use href="#leafPetal" transform="rotate(90 100 90)"/>
-                    <use href="#leafPetal" transform="rotate(135 100 90)"/>
-                    <use href="#leafPetal" transform="rotate(180 100 90)"/>
-                    <use href="#leafPetal" transform="rotate(225 100 90)"/>
-                    <use href="#leafPetal" transform="rotate(270 100 90)"/>
-                    <use href="#leafPetal" transform="rotate(315 100 90)"/>
-                  </g>
-                  <!-- nervaduras -->
-                  <g stroke="#5f6c3d" stroke-width="1" fill="none" opacity=".8">
-                    <path d="M100 86 V20"/><path d="M100 86 V20" transform="rotate(45 100 90)"/>
-                    <path d="M100 86 V20" transform="rotate(90 100 90)"/><path d="M100 86 V20" transform="rotate(135 100 90)"/>
-                    <path d="M100 86 V20" transform="rotate(180 100 90)"/><path d="M100 86 V20" transform="rotate(225 100 90)"/>
-                    <path d="M100 86 V20" transform="rotate(270 100 90)"/><path d="M100 86 V20" transform="rotate(315 100 90)"/>
-                  </g>
-                  <circle cx="100" cy="90" r="58" fill="#4a562e" opacity=".9"/>
-                </svg>
-                <span class="calendar-label">
-                  <span class="calendar-small">Añádelo a tu</span>
-                  <span class="calendar-script">Calendario</span>
-                </span>
+                <img src="assets/img/calendario.webp" alt="Añádelo a tu calendario" width="700" height="677" decoding="async">
               </button>
               <ul class="dropdown-menu calendar-menu">
                 <li>
@@ -196,8 +158,55 @@
         </div>
       </div>
 
-    </div>
+            <!-- ===== SECCIÓN: Fotos polaroid ===== -->
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+          <div class="polaroids reveal">
+            <figure class="polaroid polaroid--1">
+              <div class="polaroid-photo"><img src="assets/img/polaroid-1.jpeg" alt="Miguel y Alison" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+            </figure>
+            <figure class="polaroid polaroid--2">
+              <div class="polaroid-photo"><img src="assets/img/polaroid-2.jpeg" alt="Miguel y Alison" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+            </figure>
+            <figure class="polaroid polaroid--3">
+              <div class="polaroid-photo"><img src="assets/img/polaroid-3.jpeg" alt="Miguel y Alison" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+            </figure>
+            <img class="polaroids-flower" src="assets/img/flor-polaroid.webp" alt="" aria-hidden="true" width="286" height="1100" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+        <!-- ===== SECCIÓN: Frase ===== -->
+      <div class="row justify-content-center">
+        <div class="col-11 col-md-8 col-lg-6">
+          <blockquote class="frase reveal">
+            <p>Coincidir fue un regalo, amarnos una elección y compartir nuestra vida será la bendición más bonita.</p>
+          </blockquote>
+        </div>
+      </div>
+
+      <!-- ===== SECCIÓN: Padrinos ===== -->
+      <div class="row justify-content-center">
+        <div class="col-11 col-sm-9 col-md-7 col-lg-5 col-xl-4">
+          <div class="sheet-wrap sheet-wrap--plain reveal">
+            <article class="sheet sheet--alt" aria-labelledby="padrinosTitle">
+              <div class="sheet-frame" aria-hidden="true"></div>
+              <div class="sheet-body">
+                <h2 class="sheet-kicker" id="padrinosTitle">Nuestros padrinos</h2>
+                <ul class="sheet-list list-unstyled mb-0">
+                  <li>Erika Salazar</li>
+                  <li>Francisco Chavarria</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.container -->
   </section>
+
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js" defer></script>
