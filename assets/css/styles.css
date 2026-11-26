@@ -680,3 +680,18 @@ img.env-layer{ object-fit:fill; display:block; }
 .venues > .venue-seal{ translate:-50% 0; scale:1.4; transition:opacity .6s ease .75s, scale .6s var(--ease-out) .75s; }
 .venues.is-in > .venue-seal{ translate:-50% 0; scale:1; }
 
+/* Ramo del lado izquierdo: arranca a media hoja y cuelga hacia abajo */
+.sheet-wrap--plain{ margin-bottom:clamp(9rem,40vw,13rem); }   /* espacio para el amaranto colgante */
+.sheet-flower{
+  position:absolute;
+  z-index:2;
+  top:40%;                       /* a partir del centro de la hoja */
+  left:-7%;
+  width:30%;
+  height:auto;
+  rotate:-5deg;
+  transform-origin:50% 0;        /* se balancea desde arriba, como algo que cuelga */
+  pointer-events:none;
+  filter:drop-shadow(0 8px 10px rgba(40,46,20,.2));
+  animation:sway 7s ease-in-out infinite alternate;
+}
