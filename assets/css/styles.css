@@ -482,8 +482,8 @@ img.env-layer{ object-fit:fill; display:block; }
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{ animation:none !important; transition-duration:.01ms !important; transition-delay:0s !important; }
   .hint .arrow-path{ stroke-dashoffset:0; }
-  .reveal, .venues > *, .polaroid, .polaroids-flower{ opacity:1 !important; }}
-
+  .reveal, .venues > *, .dresscode > *, .polaroid, .polaroids-flower{ opacity:1 !important; }
+}
 .frase{
   font-family: var(--font-script);
   font-size: 2.05rem;
