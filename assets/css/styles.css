@@ -546,6 +546,7 @@ img.env-layer{ object-fit:fill; display:block; }
   display:flex;
   flex-direction:column;
   margin:0 auto clamp(3rem,10vw,5rem);
+  margin-top: -10%;
 }
 
 /* Sobre cerrado (reutiliza las capas del sobre de la portada) */
@@ -553,7 +554,6 @@ img.env-layer{ object-fit:fill; display:block; }
   position:relative;
   width:80%;
   aspect-ratio:1412 / 870;
-  transform:rotate(-3deg);
   filter:drop-shadow(0 14px 18px rgba(40,46,20,.22));
 }
 .venue-envelope > img{ position:absolute; left:0; top:0; width:100%; height:100%; display:block; }
@@ -585,7 +585,6 @@ img.env-layer{ object-fit:fill; display:block; }
   padding:14% clamp(1.2rem,5vw,1.6rem) clamp(1.3rem,5vw,1.6rem);   /* deja libre el sello */
   text-align:center;
   color:#3d3d39;
-  transform:rotate(2deg);
   box-shadow:0 1px 2px rgba(0,0,0,.06), 0 16px 32px rgba(40,46,20,.16);
 }
 
@@ -685,13 +684,127 @@ img.env-layer{ object-fit:fill; display:block; }
 .sheet-flower{
   position:absolute;
   z-index:2;
-  top:40%;                       /* a partir del centro de la hoja */
+  top:20%;                       /* a partir del centro de la hoja */
   left:-7%;
   width:30%;
   height:auto;
-  rotate:-5deg;
   transform-origin:50% 0;        /* se balancea desde arriba, como algo que cuelga */
   pointer-events:none;
   filter:drop-shadow(0 8px 10px rgba(40,46,20,.2));
   animation:sway 7s ease-in-out infinite alternate;
 }
+
+
+/* =========================================================
+   SECCIÓN: CÓDIGO DE VESTIMENTA
+   ========================================================= */
+.dresscode{
+  position:relative;
+  aspect-ratio:1 / 1.08;
+  margin:clamp(3.5rem,12vw,5rem) auto clamp(3rem,10vw,5rem);
+}
+
+.dress-card{
+  position:absolute;
+  background:#fff;
+  box-shadow:0 1px 2px rgba(0,0,0,.06), 0 14px 30px rgba(40,46,20,.15);
+}
+
+/* Tarjeta alta (derecha) */
+.dress-card--tall{
+  z-index:1;
+  left:45%;
+  top:20%;
+  width:50%;
+  aspect-ratio:3 / 4.3;
+  rotate:1.5deg;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  padding:0 4% 6%;      /* antes: 0 6% 7% */
+}
+.dress-art{
+  width:100%;
+  height:auto;
+  color:#5d5d56;
+}
+
+/* Calas detrás de la tarjeta alta */
+.dress-flower{
+  position:absolute;
+  z-index:0;
+  left:55%;
+  top:-6%;
+  width:30%;
+  height:auto;
+  rotate:10deg;
+  transform-origin:50% 100%;
+  filter:drop-shadow(0 6px 8px rgba(40,46,20,.18));
+}
+
+/* Tarjeta pequeña (izquierda) */
+.dress-card--note{
+  z-index:2;
+  left:3%;
+  top:23%;
+  width:48%;
+  rotate:-2deg;
+  padding:clamp(1rem,4.5vw,1.4rem) clamp(.9rem,4vw,1.2rem);
+  text-align:center;
+}
+.dress-kicker{
+  font-family:var(--font-serif);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:600;
+  font-size:clamp(.85rem,3.6vw,1rem);
+  margin:0 0 .4rem;
+  color:#3d3d39;
+}
+.dress-text{
+  font-family:var(--font-serif);
+  font-size:clamp(.85rem,3.5vw,1.05rem);
+  line-height:1.25;
+  margin:0;
+  color:#55554f;
+}
+
+/* Etiqueta verde «Dress code» */
+.dress-badge{
+  position:absolute;
+  z-index:3;
+  left:18%;
+  top:63%;
+  width:42%;
+  aspect-ratio:200 / 120;
+  rotate:-3deg;
+  display:grid;
+  place-items:center;
+  filter:drop-shadow(0 10px 14px rgba(30,36,14,.3));
+}
+.dress-badge-shape{ position:absolute; inset:0; width:100%; height:100%; }
+.dress-title{
+  position:relative;
+  margin:0;
+  font-family:var(--font-script);
+  font-weight:400;
+  color:#f1ecda;
+  line-height:.8;
+  font-size:clamp(2.1rem,9.5vw,2.8rem);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.dress-title span:last-child{ margin-left:1.2em; }
+
+/* Aparición escalonada */
+.dresscode > *{
+  opacity:0;
+  transition:opacity .8s ease, translate 1s var(--ease-out);
+}
+.dresscode .dress-flower{ translate:0 30px; transition-delay:.45s; }
+.dresscode .dress-card--tall{ translate:30px 0; }
+.dresscode .dress-card--note{ translate:-30px 0; transition-delay:.2s; }
+.dresscode .dress-badge{ translate:0 30px; transition-delay:.6s; }
+.dresscode.is-in > *{ opacity:1; translate:0 0; }
+
